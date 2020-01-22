@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+# Querie que cambia la fecha del formato utilizado en GECI a formato ISO8601
+ARCHIVO_DE_DATOS=$1
+NOMBRE_TABLA=$(basename "$ARCHIVO_DE_DATOS" .csv)
+NOMBRE_COLUMNA=${2:-Fecha}
+csvsql -y 0 -I --blanks --query \
+    "SELECT SUBSTR($NOMBRE_COLUMNA,8,4) ||'-'|| \
+            CASE \
+                WHEN $NOMBRE_COLUMNA LIKE '%Ene%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Ene','01') \
+                WHEN $NOMBRE_COLUMNA LIKE '%Feb%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Feb','02') \
+                WHEN $NOMBRE_COLUMNA LIKE '%Mar%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Mar','03') \
+                WHEN $NOMBRE_COLUMNA LIKE '%Abr%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Abr','04') \
+                WHEN $NOMBRE_COLUMNA LIKE '%May%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'May','05') \
+                WHEN $NOMBRE_COLUMNA LIKE '%Jun%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Jun','06') \
+                WHEN $NOMBRE_COLUMNA LIKE '%Jul%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Jul','07') \
+                WHEN $NOMBRE_COLUMNA LIKE '%Ago%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Ago','08') \
+                WHEN $NOMBRE_COLUMNA LIKE '%Sep%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Sep','09') \
+                WHEN $NOMBRE_COLUMNA LIKE '%Oct%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Oct','10') \
+                WHEN $NOMBRE_COLUMNA LIKE '%Nov%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Nov','11') \
+                WHEN $NOMBRE_COLUMNA LIKE '%Dic%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Dic','12') \
+                ELSE $NOMBRE_COLUMNA
+            END ||'-'|| \
+    SUBSTR($NOMBRE_COLUMNA,1,2) AS Fecha_ISO8601, *\
+    FROM $NOMBRE_TABLA" \
+$ARCHIVO_DE_DATOS | csvcut --not-columns $NOMBRE_COLUMNA
