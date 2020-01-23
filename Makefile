@@ -1,8 +1,11 @@
+SHELL := /bin/bash
+
 # Enlista phonies
 .PHONY: install tests
 
 tests: install
-	cambia_formato_fecha tests/data/test.csv
+	[ $$(tail -1 tests/data/test.csv | cut --characters=1-11) == "01/Dic/2019" ] && \
+    [ $$(cambia_formato_fecha tests/data/test.csv | tail -1 | cut --characters=1-10) == "2019-12-01" ]
 
 # Instala este repo copiando los ejecutables a ~/bin
 install:
