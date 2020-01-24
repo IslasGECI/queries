@@ -21,6 +21,6 @@ csvsql -y 0 -I --blanks --query \
                 WHEN $NOMBRE_COLUMNA LIKE '%Dic%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Dic','12') \
                 ELSE $NOMBRE_COLUMNA
             END ||'-'|| \
-    SUBSTR($NOMBRE_COLUMNA,1,2) AS Fecha_ISO8601, *\
+            SUBSTR($NOMBRE_COLUMNA,1,2) AS Fecha_ISO8601, *\
     FROM $NOMBRE_TABLA" \
 $ARCHIVO_DE_DATOS | csvcut --not-columns $NOMBRE_COLUMNA | sed s/Fecha_ISO8601/$NOMBRE_COLUMNA/g
