@@ -23,4 +23,4 @@ csvsql -y 0 -I --blanks --query \
             END ||'-'|| \
     SUBSTR($NOMBRE_COLUMNA,1,2) AS Fecha_ISO8601, *\
     FROM $NOMBRE_TABLA" \
-$ARCHIVO_DE_DATOS | csvcut --not-columns $NOMBRE_COLUMNA
+$ARCHIVO_DE_DATOS | csvcut --not-columns $NOMBRE_COLUMNA | sed s/Fecha_ISO8601/$NOMBRE_COLUMNA/g
