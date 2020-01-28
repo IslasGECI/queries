@@ -4,8 +4,8 @@
 ARCHIVO_DE_DATOS=$1
 NOMBRE_TABLA=$(basename "$ARCHIVO_DE_DATOS" .csv)
 NOMBRE_COLUMNA=${2:-Fecha}
-csvsql -y 0 -I --blanks --query \
-    "SELECT SUBSTR($NOMBRE_COLUMNA,8,4) ||'-'|| \
+
+query="SELECT SUBSTR($NOMBRE_COLUMNA,8,4) ||'-'|| \
             CASE \
                 WHEN $NOMBRE_COLUMNA LIKE '%Ene%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Ene','01') \
                 WHEN $NOMBRE_COLUMNA LIKE '%Feb%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Feb','02') \
@@ -21,6 +21,7 @@ csvsql -y 0 -I --blanks --query \
                 WHEN $NOMBRE_COLUMNA LIKE '%Dic%' THEN replace(SUBSTR($NOMBRE_COLUMNA,4,3),'Dic','12') \
                 ELSE $NOMBRE_COLUMNA
             END ||'-'|| \
-            SUBSTR($NOMBRE_COLUMNA,1,2) AS Fecha_ISO8601, *\
-    FROM $NOMBRE_TABLA" \
-$ARCHIVO_DE_DATOS | csvcut --not-columns $NOMBRE_COLUMNA | sed s/Fecha_ISO8601/$NOMBRE_COLUMNA/g
+            SUBSTR($NOMBRE_COLUMNA,1,2) AS Fecha_ISO8601, * \
+    FROM $NOMBRE_TABLA"
+
+csvsql -y 0 -I --blanks --query "${query}" $ARCHIVO_DE_DATOS | csvcut --not-columns $NOMBRE_COLUMNA | sed s/Fecha_ISO8601/$NOMBRE_COLUMNA/g
