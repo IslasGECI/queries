@@ -1,9 +1,0 @@
-dist: bionic
-language: bash
-services:
-  - docker
-script:
-  - |
-    docker run --volume ${PWD}:/workdir islasgeci/queries:latest bash -c "
-      make install &&
-      make tests"
