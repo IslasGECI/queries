@@ -4,7 +4,7 @@
 data_file=${1}
 export table_name=$(basename "${data_file}" .csv)
 export column_name=${2:-Fecha}
-src_path=$(dirname "/usr/local/bin/query_cambia_formato_fecha.sql")
+src_path=$(dirname "${0}")
 query=$(envsubst < ${src_path}/query_cambia_formato_fecha.sql)
 csvsql --snifflimit 0 --no-inference --blanks --query "${query}" ${data_file} \
   | csvcut --not-columns ${column_name} \
