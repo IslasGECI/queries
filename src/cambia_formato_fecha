@@ -4,7 +4,8 @@
 data_file=${1}
 export table_name=$(basename "$data_file" .csv)
 export column_name=${2:-Fecha}
-query=$(envsubst < /usr/local/bin/query_cambia_formato_fecha.sql)
+src_path=$(dirname "/usr/local/bin/query_cambia_formato_fecha.sql")
+query=$(envsubst < ${src_path}/query_cambia_formato_fecha.sql)
 csvsql --snifflimit 0 --no-inference --blanks --query "${query}" ${data_file} \
   | csvcut --not-columns ${column_name} \
   | sed s/Fecha_ISO8601/${column_name}/g
