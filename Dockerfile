@@ -1,4 +1,9 @@
-FROM islasgeci/base:0718
+FROM ubuntu:18.04
+ENV PYTHONIOENCODING=utf-8
+RUN apt-get update && apt-get install --yes --no-install-recommends \
+    csvkit \
+    gettext-base \
+    make
 COPY . /workdir
-RUN apt-get install gettext-base
+WORKDIR /workdir
 CMD make
