@@ -4,8 +4,11 @@ SHELL := /bin/bash
 .PHONY: install tests
 
 tests: install
+	# Prueba cambia_formato_fecha
 	[ $$(tail -1 tests/data/test.csv | cut --characters=1-11) == "01/Dic/2019" ] && \
     [ $$(cambia_formato_fecha tests/data/test.csv | tail -1 | cut --characters=1-10) == "2019-12-01" ]
+	# Verifica que shelldoctest está instalado
+	pip freeze | grep shelldoctest
 
 # Instala este repo copiando los ejecutables a ~/bin
 install:
