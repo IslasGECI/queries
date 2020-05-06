@@ -1,6 +1,22 @@
 """
-La funcion cambia_formato_fecha bla bla bla
-El archivo de prueba tiene las fechas en el formato GECI
+La funcion cambia_formato_fecha cambia las fechas de un archivo de datos CSV con 
+el formato utilizado en GECI (dd/Mmm/aaaa) a formato ISO-8601 (aaaa-mm-dd).
+
+Sintaxis:
+  cambia_formato_fecha [[OPCIÓN] | RUTA]
+
+  OPCIÓN: Alguna de las opciones que se enlistan abajo
+  RUTA Ruta del directiorio donde se encuentra el archivo CSV
+
+Opciones:
+  -h, --help Despliega este mensaje de ayuda
+  -v, --version Muestra la versión de cambia_formato_fecha
+
+Ejemplos:
+  cambia_formato_fecha <RUTA-DEL-CSV>
+  cambia_formato_fecha <RUTA-DEL-CSV> > <RUTA-DEL-ARCHIVO-DONDE-SE-GUARDARAN-LOS-DATOS>
+
+El archivo de prueba tiene las fechas en el formato GECI.
 
 $ head --lines=2 tests/data/test.csv
 Fecha,Cantidad_de_trampas_activas,Cantidad_de_avistamientos,Responsable,Notas
