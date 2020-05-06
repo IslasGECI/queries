@@ -3,14 +3,14 @@ La funcion cambia_formato_fecha cambia las fechas de un archivo de datos CSV con
 el formato utilizado en GECI (dd/Mmm/aaaa) a formato ISO-8601 (aaaa-mm-dd).
 
 Sintaxis:
-  cambia_formato_fecha [[OPCIÓN] | RUTA]
+  cambia_formato_fecha [[OPCION] | RUTA]
 
-  OPCIÓN: Alguna de las opciones que se enlistan abajo
+  OPCION: Alguna de las opciones que se enlistan abajo
   RUTA Ruta del directiorio donde se encuentra el archivo CSV
 
 Opciones:
   -h, --help Despliega este mensaje de ayuda
-  -v, --version Muestra la versión de cambia_formato_fecha
+  -v, --version Muestra la version de cambia_formato_fecha
 
 Ejemplos:
   cambia_formato_fecha <RUTA-DEL-CSV>
