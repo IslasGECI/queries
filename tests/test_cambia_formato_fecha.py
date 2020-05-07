@@ -30,7 +30,7 @@ Ejemplo de uso:
 
 $ cambia_formato_fecha tests/data/test.csv
 Fecha,Cantidad_de_trampas_activas,Cantidad_de_avistamientos,Responsable,Notas
-2018-0615,4,0,EB,NA
+2018-06-15,4,0,EB,NA
 2019-08-30,21,0,MA y MG,NA
 2019-12-01,21,0,MA y MG,NA
 """
