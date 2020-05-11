@@ -3,9 +3,9 @@ all: tests
 SHELL := /bin/bash
 
 # Enlista phonies
-.PHONY: doctests install tests
+.PHONY: install tests doctests
 
-tests: doctests install
+tests: install doctests
 	# Prueba cambia_formato_fecha
 	[ $$(tail -1 tests/data/test.csv | cut --characters=1-11) == "01/Dic/2019" ] && \
     [ $$(cambia_formato_fecha tests/data/test.csv | tail -1 | cut --characters=1-10) == "2019-12-01" ]
