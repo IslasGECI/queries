@@ -1,4 +1,4 @@
-all: tests doctests
+all: tests
 
 SHELL := /bin/bash
 
