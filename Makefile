@@ -21,3 +21,6 @@ install:
 	cp ./src/* /usr/local/bin
 	chmod +x /usr/local/bin/*
 	export PATH="/usr/local/bin:$${PATH}"
+	# Doctest:
+	mkdir --parents /usr/local/doctests
+	cp ./tests/test_*.py /usr/local/doctests
