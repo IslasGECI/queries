@@ -2,7 +2,8 @@
 #
 # Query que cambia la fecha del formato utilizado en GECI a formato ISO8601
 case "$1" in
-  -h | --help) cat /usr/local/doctests/test_${0##*/}.py | head --lines=-1 | tail --lines=+2 && exit 0 ;;
+  -h | --help) head --lines=-1 \
+  /usr/local/doctests/test_${0##*/}.py | tail --lines=+2 && exit 0 ;;
 esac
 
 

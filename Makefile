@@ -1,11 +1,9 @@
-all: tests
+tests: doctests test_cambia_formato_fecha test_dependencies
 
 SHELL := /bin/bash
 
 # Enlista phonies
 .PHONY: doctests install test_cambia_formato_fecha test_dependencies tests
-
-tests: doctests test_cambia_formato_fecha test_dependencies
 
 test_dependencies:
 	pip freeze | grep shelldoctest
