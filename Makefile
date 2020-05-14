@@ -3,17 +3,20 @@ all: tests
 SHELL := /bin/bash
 
 # Enlista phonies
-.PHONY: install tests doctests
+.PHONY: doctests install test_cambia_formato_fecha test_dependencies tests
 
-tests: install doctests
-	# Prueba cambia_formato_fecha
-	[ $$(tail -1 tests/data/test.csv | cut --characters=1-11) == "01/Dic/2019" ] && \
-    [ $$(cambia_formato_fecha tests/data/test.csv | tail -1 | cut --characters=1-10) == "2019-12-01" ]
-	# Verifica que shelldoctest está instalado
+tests: doctests test_cambia_formato_fecha test_dependencies
+
+test_dependencies:
 	pip freeze | grep shelldoctest
 
-doctests:
+test_cambia_formato_fecha: install
+	[ $$(tail -1 tests/data/test.csv | cut --characters=1-11) == "01/Dic/2019" ] && \
+    [ $$(cambia_formato_fecha tests/data/test.csv | tail -1 | cut --characters=1-10) == "2019-12-01" ]
+
+doctests: install
 	shell-doctest test tests/test_cambia_formato_fecha.py | grep "failures" && exit 1 || exit 0
+	cambia_formato_fecha --help | grep "$$ cambia_formato_fecha"
 
 # Instala este repo copiando los ejecutables a ~/bin
 install:
