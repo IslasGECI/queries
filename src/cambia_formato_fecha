@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 #
 # Query que cambia la fecha del formato utilizado en GECI a formato ISO8601
+case "$1" in
+  -h | --help) head --lines=-1 \
+  /usr/local/doctests/test_${0##*/}.py | tail --lines=+2 && exit 0 ;;
+esac
+
+
 data_file=${1}
 export table_name=$(basename "${data_file}" .csv)
 export column_name=${2:-Fecha}
