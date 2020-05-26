@@ -1,8 +1,8 @@
-name: Ciencia de Datos - GECI
+name: Conservación de Islas
 on: [push, pull_request]
 
 jobs:
-  actions:
+  tests_in_container:
     runs-on: ubuntu-18.04
     steps:
     - name: Copia repositorio
@@ -10,4 +10,6 @@ jobs:
     - name: Construye imagen
       run: docker build --tag islasgeci/queries .
     - name: Ejecuta objetivo principal del Makefile
-      run: docker run islasgeci/queries
+      run: docker run islasgeci tests
+    - name: Ejecuta objetivo principal del Makefile
+      run: docker run islasgeci doctests
