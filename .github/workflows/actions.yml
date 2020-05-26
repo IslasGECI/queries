@@ -8,7 +8,7 @@ jobs:
     - name: Copia repositorio
       uses: actions/checkout@v2
     - name: Construye imagen
-      run: docker build --tag islasgeci/queries .
+      run: docker build --tag islasgeci .
     - name: Ejecuta objetivo principal del Makefile
       run: docker run islasgeci tests
     - name: Ejecuta objetivo principal del Makefile
