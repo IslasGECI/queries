@@ -9,4 +9,5 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     python-pip
 RUN pip install setuptools
 RUN pip install shelldoctest
+RUN apt-get install jq --yes
 CMD make
