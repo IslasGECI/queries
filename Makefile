@@ -13,6 +13,7 @@ doctests: install
 	pip freeze | grep shelldoctest
 	shell-doctest test tests/test_cambia_formato_fecha.py | grep "failures" && exit 1 || exit 0
 	cambia_formato_fecha --help | grep "$$ cambia_formato_fecha"
+	shell-doctest test tests/test_cat_lat_and_lon_files.py | grep "failures" && exit 1 || exit 0
 
 # Instala este repo copiando los ejecutables a ~/bin
 install:
