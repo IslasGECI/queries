@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-#1
+#
 poligono=${1}
 isla=${2}
 latitud_isla=$(cat ${poligono} | jq '.[]
   | select(.id == "'${isla}'")
   | {"Geopoligono"}')
-echo ${latitud_isla}

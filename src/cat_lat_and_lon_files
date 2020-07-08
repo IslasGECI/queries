@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-#3 ./src/cat_lat_and_lon_files alacranes
+# ./src/cat_lat_and_lon_files alacranes
 poligono=${1}
 isla=${2}
 { echo -e "lat,lon"; } > ${isla}_lat_lon_file.csv
