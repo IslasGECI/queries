@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 #
-# ./src/create_lat_and_lon_data_file socorro
 poligono=${1}
 isla=${2}
 for coordinate in lat lon; do
