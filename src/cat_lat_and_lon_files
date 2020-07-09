@@ -6,4 +6,5 @@ isla=${2}
 { echo -e "lat,lon"; } > ${isla}_lat_lon_file.csv
 ./src/create_lat_and_lon_data_file ${poligono} ${isla}
 pr -mts, ${isla}_lat_coordinates.csv ${isla}_lon_coordinates.csv >> ${isla}_lat_lon_file.csv
+rm ${isla}_lat_coordinates.csv ${isla}_lon_coordinates.csv
 cat ${isla}_lat_lon_file.csv
