@@ -2,6 +2,10 @@ tests: test_cambia_formato_fecha
 
 SHELL := /bin/bash
 
+define test_doctest
+		shell-doctest test $(1) | grep "failures"&& exit 1 || exit 0
+endef
+
 # Enlista phonies
 .PHONY: doctests install test_cambia_formato_fecha tests
 
@@ -11,8 +15,9 @@ test_cambia_formato_fecha: install
 
 doctests: install
 	pip freeze | grep shelldoctest
-	shell-doctest test tests/test_cambia_formato_fecha.py | grep "failures" && exit 1 || exit 0
+	$(call test_doctest, tests/test_cambia_formato_fecha.py)
 	cambia_formato_fecha --help | grep "$$ cambia_formato_fecha"
+	$(call test_doctest, tests/test_cat_lat_and_lon_files.py)
 
 # Instala este repo copiando los ejecutables a ~/bin
 install:
@@ -23,3 +28,6 @@ install:
 	# Doctest:
 	mkdir --parents /usr/local/doctests
 	cp ./tests/test_*.py /usr/local/doctests
+
+clean:
+	rm alacranes_lat_lon_file.csv
