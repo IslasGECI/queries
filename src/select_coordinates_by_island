@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #
+# Selecciona las coordenadas del poligono de una isla.
+# ./src/select_coordinates_by_island tests/data/poligonos.json socorro
 poligono=${1}
 isla=${2}
 latitud_isla=$(cat $poligono | jq '.[]

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #
+# Crea dos archivos CSV con la latitud y longitud del poligono de una isla respectivamente
+# Ejemplo: ./src/create_lat_and_lon_data_file tests/data/poligonos.json alacranes
 poligono=${1}
 isla=${2}
 for coordinate in lat lon; do
