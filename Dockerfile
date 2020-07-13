@@ -5,9 +5,9 @@ ENV PYTHONIOENCODING=utf-8
 RUN apt-get update && apt-get install --yes --no-install-recommends \
     csvkit \
     gettext-base \
+    jq \
     make \
-    python-pip \
-    jq --yes
+    python-pip
 RUN pip install setuptools
 RUN pip install shelldoctest
 CMD make
