@@ -18,7 +18,7 @@ doctests: install
 	$(call test_doctest, tests/test_cambia_formato_fecha.py)
 	cambia_formato_fecha --help | grep "$$ cambia_formato_fecha"
 	$(call test_doctest, tests/test_cat_lat_and_lon_files.py)
-	$(call test_doctest, tests/catch_enf_effort_per_year.py)
+	$(call test_doctest, tests/catch_and_effort_per_year.py)
 
 # Instala este repo copiando los ejecutables a ~/bin
 install:
