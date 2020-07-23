@@ -36,4 +36,5 @@ csvsql --snifflimit 0 --no-inference --blanks --query \
 FROM Esfuerzos AS E
 LEFT OUTER JOIN Capturas AS C
 ON E.Temporada = C.Temporada AND E.Zona = C.Zona
-" Capturas.csv Esfuerzos.csv;
+" Capturas.csv Esfuerzos.csv | \
+sed -e "s/,$/,0/"
