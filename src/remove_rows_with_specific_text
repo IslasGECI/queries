@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#
+file_name=${1}
+sed -e '1!{/Zona/d}' -i ${file_name}
