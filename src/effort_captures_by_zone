@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 #
-csvsql --snifflimit 0 --no-inference --blanks --query \
-"SELECT E.Temporada,E.Zona,E.Esfuerzo, C.Capturas
-FROM Esfuerzos AS E
-LEFT OUTER JOIN Capturas AS C
-ON E.Temporada = C.Temporada AND E.Zona = C.Zona
-" Capturas.csv Esfuerzos.csv | \
-sed -e "s/,$/,0/"
+data_file=${1}
+path_file=$(dirname ${data_file})
+name_file=$(basename ${data_file} .csv)
+./src/change_header ${data_file} > ${path_file}/${name_file}_tmp_header.csv
+./src/get_captures_by_zone ${path_file}/${name_file}_tmp_header.csv > ${path_file}/captures_${name_file}.csv
+./src/get_effort_by_zone ${path_file}/${name_file}_tmp_header.csv > ${path_file}/effort_${name_file}.csv
+./src/remove_rows_with_specific_text ${path_file}/captures_${name_file}.csv
+./src/remove_rows_with_specific_text ${path_file}/effort_${name_file}.csv
