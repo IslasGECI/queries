@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+csvsql --snifflimit 0 --no-inference --blanks --query \
+"SELECT E.Temporada,E.Zona,E.Esfuerzo, C.Capturas
+FROM Esfuerzos AS E
+LEFT OUTER JOIN Capturas AS C
+ON E.Temporada = C.Temporada AND E.Zona = C.Zona
+" Capturas.csv Esfuerzos.csv | \
+sed -e "s/,$/,0/"

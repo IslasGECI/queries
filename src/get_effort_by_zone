@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#
+csvsql --snifflimit 0 --no-inference --blanks --query \
+"SELECT
+  strftime('%Y',Fecha) AS Temporada,
+  CASE 
+    WHEN ID_de_trampa = 'NA' THEN 'NA'
+    WHEN ID_de_trampa = 'SM4-Melpo' THEN '01'
+    ELSE SUBSTR(ID_de_trampa,4,2)
+  END Zona,
+  COUNT(*) AS Esfuerzo
+FROM ${first_table}
+WHERE Estado_trampa = 'X' OR Estado_trampa = 'A'
+GROUP BY Temporada, Zona
+" ${first_file} > Esfuerzos.csv;
