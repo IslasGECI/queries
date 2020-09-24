@@ -1,5 +1,5 @@
 """
-./src/catch_and_effort_per_year tests/data/posicion_trampas_gatos_isla_guadalupe.csv
+./src/catch_and_effort_per_zone tests/data/posicion_trampas_gatos_isla_guadalupe.csv
 Temporada,Zona,Esfuerzo,Capturas
 2018,01,1,0
 2018,03,1,0
