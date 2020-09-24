@@ -8,3 +8,7 @@ name_file=$(basename ${data_file} .csv)
 ./src/get_effort_by_zone ${path_file}/${name_file}_tmp_header.csv > ${path_file}/effort_${name_file}.csv
 ./src/remove_rows_with_specific_text ${path_file}/captures_${name_file}.csv
 ./src/remove_rows_with_specific_text ${path_file}/effort_${name_file}.csv
+./src/join_effort_and_captures_files \
+  ${path_file}/effort_${name_file}.csv ${path_file}/captures_${name_file}.csv \
+  > ${path_file}/weekly_resume_${name_file}.csv
+sed -e "s/,$/,0/" ${path_file}/weekly_resume_${name_file}.csv
