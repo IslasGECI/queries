@@ -3,7 +3,7 @@ tests: test_cambia_formato_fecha
 SHELL := /bin/bash
 
 define test_doctest
-		shell-doctest test $(1) | grep "failures"&& exit 1 || exit 0
+		shell-doctest test $(1) | grep "failures" && exit 1 || exit 0
 endef
 
 # Enlista phonies
@@ -18,7 +18,7 @@ doctests: install
 	$(call test_doctest, tests/test_cambia_formato_fecha.py)
 	cambia_formato_fecha --help | grep "$$ cambia_formato_fecha"
 	$(call test_doctest, tests/test_cat_lat_and_lon_files.py)
-	$(call test_doctest, tests/catch_and_effort_per_year.py)
+	$(call test_doctest, tests/test_effort_captures_by_zone.py)
 
 # Instala este repo copiando los ejecutables a ~/bin
 install:
