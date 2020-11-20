@@ -17,4 +17,4 @@ SELECT
       END ||'-'||
     SUBSTR($column_name,1,2) AS Fecha_ISO8601,
     *
-FROM $table_name
+FROM '$table_name'
