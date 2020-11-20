@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# Este query selecciona la tasa de crecimiento poblacional y el p-valor de las tablas de tasas de
+# crecimiento por isla.
+
+data_file=${1}
+export table_name=$(basename "${data_file}" .csv)
+export p_value_column=${2}
+export conditional=${3}
+src_path=$(dirname "${0}")
+query=$(envsubst < ${src_path}/query_select_growth_rates_and_p_values.sql)
+
+csvsql --snifflimit 0 --no-inference --blanks --query "${query}" ${data_file}
