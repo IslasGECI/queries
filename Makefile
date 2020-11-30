@@ -9,8 +9,8 @@ test_dependencies:
 	pip freeze | grep shelldoctest
 
 test_cambia_formato_fecha: install
-	[ $$(tail -1 tests/data/test.csv | cut --characters=1-11) == "01/Dic/2019" ] && \
-    [ $$(cambia_formato_fecha tests/data/test.csv | tail -1 | cut --characters=1-10) == "2019-12-01" ]
+	[ $$(tail -1 tests/data/test_2019-2020.csv | cut --characters=1-11) == "01/Dic/2019" ] && \
+    [ $$(cambia_formato_fecha tests/data/test_2019-2020.csv | tail -1 | cut --characters=1-10) == "2019-12-01" ]
 
 doctests: install
 	shell-doctest test tests/test_cambia_formato_fecha.py | grep "failures" && exit 1 || exit 0
