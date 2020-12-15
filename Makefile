@@ -1,4 +1,5 @@
 tests: test_cambia_formato_fecha
+	bats tests/bats_tests/test_select_growth_rates_and_p_values.sh
 
 SHELL := /bin/bash
 

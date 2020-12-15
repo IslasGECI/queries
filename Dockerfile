@@ -8,6 +8,10 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     jq \
     make \
     python-pip
+RUN apt-get install --yes git
 RUN pip install setuptools
 RUN pip install shelldoctest
+RUN git clone https://github.com/bats-core/bats-core.git && \
+    cd bats-core && \
+    ./install.sh /usr/local
 CMD make
