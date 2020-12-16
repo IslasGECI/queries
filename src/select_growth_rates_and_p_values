@@ -7,9 +7,15 @@ data_file=${1}
 export table_name=$(basename "${data_file}" .csv)
 export p_value_column=${2}
 export conditional=${3}
+
 export fields=${4}
 [ "$fields" == 1 ] && \
   export columns="Islet AS 'Archipelago/Island',Growth_rate AS 'Growth rate',"
+[ "$fields" == 2 ] && \
+  export columns="Species,Tasa_de_crecimiento AS 'Regional growth rate',"
+[ "$fields" == 3 ] && \
+  export columns="Species,Island AS 'Archipelago/Island',Latitude,Tasa_de_crecimiento AS 'Growth rate',"
+
 src_path=$(dirname "${0}")
 query=$(envsubst < ${src_path}/query_select_growth_rates_and_p_values.sql)
 
