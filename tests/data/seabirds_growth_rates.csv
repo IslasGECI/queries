@@ -1,4 +1,4 @@
-,Species,Island,Time period,$N_{0}$,N,N_calc,Tasa_de_crecimiento,Latitude,Tasa_de_crecimiento_boostrap,Limite_inferior,Limite_superior,Porcentaje_de_cambio,p_value,p_valor_menor
+,Species,Island,Time period,$N_{0}$,N,N_calc,Growth_rate,Latitude,Tasa_de_crecimiento_boostrap,Limite_inferior,Limite_superior,Porcentaje_de_cambio,p_value,p_valor_menor
 0,Ainleys Storm Petrel,Morro Prieto and Zapato,(2014.0-2019.0),4.0 (2014.0),{84} (2019),163.06243684948737 (2019.0),${1.21}_{-0.23}^{+0.74}$,29.0,1.21,-0.23,+0.74,"{3,976}",0.028,0.972
 1,Ashy Storm-Petrel,Todos Santos,(2015.0-2018.0),17.0 (2015.0),{51} (2018),63.50936847959935 (2018.0),${1.36}_{-0.68}^{+1.06}$,31.81,1.36,-0.68,+1.06,{273},0.055,0.945
 2,Black-vented Shearwater,Morro Prieto and Zapato,(2015.0-2019.0),87.0 (2015.0),{630} (2019),640.6856370139539 (2019.0),${1.43}_{-0.23}^{+0.2}$,29.0,1.43,-0.23,+0.2,{636},0.0,1.0
