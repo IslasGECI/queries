@@ -18,9 +18,9 @@ doctests: install
 
 # Instala este repo copiando los ejecutables a ~/bin
 install:
+	chmod +x ./src/*
 	mkdir --parents /usr/local/bin
-	cp ./src/* /usr/local/bin
-	chmod +x /usr/local/bin/*
+	cp --preserve ./src/* /usr/local/bin
 	export PATH="/usr/local/bin:$${PATH}"
 	# Doctest:
 	mkdir --parents /usr/local/doctests
