@@ -1,4 +1,4 @@
-Island,Growth_rate,p_value,p_value_menor
+Islet,Growth_rate,p_value,p_value_menor
 Alcatraz,${0.98}_{-0.01}^{+0.01}$,1.0,0.0
 Asuncion,${1.23}_{-0.19}^{+0.25}$,0.0,1.0
 Coronado,${1.09}_{-0.17}^{+0.09}$,0.4,0.6
