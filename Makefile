@@ -1,5 +1,4 @@
-tests: test_cambia_formato_fecha
-	bats tests/bats_tests/test_select_growth_rates_and_p_values.sh
+tests: test_cambia_formato_fecha test_select_growth_rates_and_p_values
 
 SHELL := /bin/bash
 
@@ -8,11 +7,16 @@ define test_doctest
 endef
 
 # Enlista phonies
-.PHONY: doctests install test_cambia_formato_fecha tests
+.PHONY: \
+		clean \
+		doctests \
+		install \
+		test_cambia_formato_fecha \
+		test_select_growth_rates_and_p_values \
+		tests
 
-test_cambia_formato_fecha: install
-	[ $$(tail -1 tests/data/test_2019-2020.csv | cut --characters=1-11) == "01/Dic/2019" ] && \
-    [ $$(cambia_formato_fecha tests/data/test_2019-2020.csv | tail -1 | cut --characters=1-10) == "2019-12-01" ]
+clean:
+	rm alacranes_lat_lon_file.csv
 
 doctests: install
 	pip freeze | grep shelldoctest
@@ -31,5 +35,9 @@ install:
 	mkdir --parents /usr/local/doctests
 	cp ./tests/test_*.py /usr/local/doctests
 
-clean:
-	rm alacranes_lat_lon_file.csv
+test_cambia_formato_fecha: install
+	[ $$(tail -1 tests/data/test_2019-2020.csv | cut --characters=1-11) == "01/Dic/2019" ] && \
+    [ $$(cambia_formato_fecha tests/data/test_2019-2020.csv | tail -1 | cut --characters=1-10) == "2019-12-01" ]
+
+test_select_growth_rates_and_p_values:
+	bats tests/bats_tests/test_select_growth_rates_and_p_values.sh
