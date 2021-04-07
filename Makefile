@@ -20,7 +20,6 @@ clean:
 
 doctests: install
 	$(call test_doctest, tests/test_cat_lat_and_lon_files.py)
-	$(call test_doctest, tests/test_effort_captures_by_zone.py)
 
 # Instala este repo copiando los ejecutables a ~/bin
 install:
