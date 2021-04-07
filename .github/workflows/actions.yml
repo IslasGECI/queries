@@ -11,5 +11,3 @@ jobs:
       run: docker build --tag islasgeci .
     - name: Corre pruebas
       run: docker run islasgeci make tests
-    - name: Corre doctests
-      run: docker run islasgeci make doctests
