@@ -19,9 +19,6 @@ clean:
 	rm alacranes_lat_lon_file.csv
 
 doctests: install
-	pip freeze | grep shelldoctest
-	$(call test_doctest, tests/test_cambia_formato_fecha.py)
-	cambia_formato_fecha --help | grep "$$ cambia_formato_fecha"
 	$(call test_doctest, tests/test_cat_lat_and_lon_files.py)
 	$(call test_doctest, tests/test_effort_captures_by_zone.py)
 
