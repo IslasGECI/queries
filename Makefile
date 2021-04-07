@@ -26,7 +26,7 @@ test_cambia_formato_fecha: install
 	[ $$(cambia_formato_fecha tests/data/test_2019-2020.csv | tail -1 | cut --characters=1-10) == "2019-12-01" ]
 
 test_cat_lat_and_lon_files:
-	shellspec
+	shellspec spec/cat_lat_and_lon_files_spec.sh
 
 test_select_growth_rates_and_p_values:
 	bats tests/bats_tests/test_select_growth_rates_and_p_values.sh
