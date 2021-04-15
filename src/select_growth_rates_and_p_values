@@ -14,7 +14,7 @@ export fields=${4}
 [ "$fields" == 2 ] && \
   export columns="Species,Tasa_de_crecimiento AS 'Regional growth rate',"
 [ "$fields" == 3 ] && \
-  export columns="Species,Island AS 'Archipelago/Island',Latitude,Growth_rate AS 'Growth rate',"
+  export columns="Species,Island AS 'Archipelago/Island',Latitude,Tasa_de_crecimiento AS 'Growth rate',"
 
 src_path=$(dirname "${0}")
 query=$(envsubst < ${src_path}/query_select_growth_rates_and_p_values.sql)
