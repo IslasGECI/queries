@@ -7,6 +7,9 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     gettext-base \
     jq \
     make \
+    python3 \
+    python3-dev \
+    python3-pip \
     python-pip
 RUN apt-get install --yes git
 RUN pip install setuptools
