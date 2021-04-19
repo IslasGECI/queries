@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# Concatena los archivos obtenidos de la función 'create_lat_and_lon_data_file'
+# ./src/cat_lat_and_lon_files tests/data/poligonos.json alacranes
+poligono=${1}
+isla=${2}
+nombre_archivo=${isla}_lat_lon_file.csv
+{ echo -e "lat,lon"; } > ${nombre_archivo}
+./src/create_lat_and_lon_data_file ${poligono} ${isla}
+pr --merge --omit-header --separator=, \
+  ${isla}_lat_coordinates.csv ${isla}_lon_coordinates.csv >> ${nombre_archivo}
+rm ${isla}_lat_coordinates.csv ${isla}_lon_coordinates.csv
+cat ${nombre_archivo}
