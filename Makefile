@@ -1,4 +1,5 @@
-tests: test_cambia_formato_fecha test_select_growth_rates_and_p_values test_cat_lat_and_lon_files
+tests: test_select_growth_rates_and_p_values
+	shellspec
 
 SHELL := /bin/bash
 
@@ -6,8 +7,6 @@ SHELL := /bin/bash
 .PHONY: \
 		clean \
 		install \
-		test_cambia_formato_fecha \
-		test_cat_lat_and_lon_files \
 		test_select_growth_rates_and_p_values \
 		tests
 
@@ -20,13 +19,6 @@ install:
 	mkdir --parents /usr/local/bin
 	cp --preserve ./src/* /usr/local/bin
 	export PATH="/usr/local/bin:$${PATH}"
-
-test_cambia_formato_fecha: install
-	[ $$(tail -1 tests/data/test_2019-2020.csv | cut --characters=1-11) == "01/Dic/2019" ] && \
-	[ $$(cambia_formato_fecha tests/data/test_2019-2020.csv | tail -1 | cut --characters=1-10) == "2019-12-01" ]
-
-test_cat_lat_and_lon_files:
-	shellspec spec/cat_lat_and_lon_files_spec.sh
 
 test_select_growth_rates_and_p_values:
 	bats tests/bats_tests/test_select_growth_rates_and_p_values.sh
