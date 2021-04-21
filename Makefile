@@ -1,5 +1,5 @@
 tests: test_select_growth_rates_and_p_values
-	shellspec
+	shellspec tests/shellspec_tests/
 
 SHELL := /bin/bash
 
