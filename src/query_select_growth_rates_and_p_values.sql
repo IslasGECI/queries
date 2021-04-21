@@ -1,6 +1,5 @@
 SELECT 
-  Islet AS 'Archipelago/Island',
-  Growth_rate AS 'Growth rate',
+  ${columns}
   CASE
     WHEN ${p_value_column} < 0.001
     THEN '$<0.001$'
