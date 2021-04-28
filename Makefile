@@ -19,7 +19,6 @@ install:
 	mkdir --parents /usr/local/bin
 	cp --preserve ./src/* /usr/local/bin
 	export PATH="/usr/local/bin:$${PATH}"
-	pip install . --upgrade
 
 test_select_growth_rates_and_p_values:
 	bats tests/bats_tests/test_select_growth_rates_and_p_values.sh
