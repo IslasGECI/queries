@@ -1,4 +1,4 @@
-tests: test_select_growth_rates_and_p_values
+tests: install test_select_growth_rates_and_p_values
 	shellspec tests/shellspec_tests/
 
 SHELL := /bin/bash
@@ -19,6 +19,7 @@ install:
 	mkdir --parents /usr/local/bin
 	cp --preserve ./src/* /usr/local/bin
 	export PATH="/usr/local/bin:$${PATH}"
+	pip install . --upgrade
 
 test_select_growth_rates_and_p_values:
 	bats tests/bats_tests/test_select_growth_rates_and_p_values.sh
