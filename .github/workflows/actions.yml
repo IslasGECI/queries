@@ -1,9 +1,16 @@
-name: Conservación de Islas
-on: [push, pull_request]
-
+name: Tests
+on:
+  pull_request:
+    branches:
+      - develop
+      - master
+  push:
+    branches:
+      - develop
+      - master
 jobs:
   tests_in_container:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - name: Copia repositorio
       uses: actions/checkout@v2
@@ -11,5 +18,3 @@ jobs:
       run: docker build --tag islasgeci .
     - name: Corre pruebas
       run: docker run islasgeci make tests
-    - name: Corre doctests
-      run: docker run islasgeci make doctests
