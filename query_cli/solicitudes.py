@@ -10,7 +10,7 @@ def cli():
 @cli.command(
     help="""
     Ejemplo:
-    
+
     queries select-growth-rates-and-p-values -f 1 -d tests/data/cormorant_all_islets_growth_rates.csv -p p_value -c '"<= 0.1"'
     """
 )
@@ -49,6 +49,7 @@ def select_growth_rates_and_p_values(data_file, p_value, conditional, fields):
 @cli.command(
     help="""
     Ejemplo:
+
     queries cambia-formato-fecha --data_file tests/data/test_2019-2020.csv --column_name Fecha
     """
 )
@@ -61,4 +62,4 @@ def select_growth_rates_and_p_values(data_file, p_value, conditional, fields):
     default="Fecha",
 )
 def cambia_formato_fecha(data_file, column_name):
-    os.system("./src/cambia_formato_fecha {} {}".format(data_file, column_name))
+    os.system("cambia_formato_fecha {} {}".format(data_file, column_name))

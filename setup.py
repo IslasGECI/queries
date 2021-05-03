@@ -2,15 +2,15 @@ from setuptools import setup, find_packages
 
 setup(
     name="queries",
-    version="0.2.0",
+    version="0.2.1",
     packages=find_packages(),
     include_package_data=True,
-    install_requires = [
+    install_requires=[
         "Click",
     ],
     entry_points={
         "console_scripts": [
             "queries = query_cli.solicitudes:cli",
         ]
-    }
+    },
 )

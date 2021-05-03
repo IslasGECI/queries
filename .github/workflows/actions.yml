@@ -9,12 +9,14 @@ on:
       - develop
       - master
 jobs:
-  tests_in_container:
+  actions:
     runs-on: ubuntu-latest
     steps:
     - name: Copia repositorio
       uses: actions/checkout@v2
     - name: Construye imagen
       run: docker build --tag islasgeci .
+    - name: Verifica el formato
+      run: docker run islasgeci make check
     - name: Corre pruebas
       run: docker run islasgeci make tests
