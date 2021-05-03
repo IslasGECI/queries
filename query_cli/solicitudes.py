@@ -62,4 +62,4 @@ def select_growth_rates_and_p_values(data_file, p_value, conditional, fields):
     default="Fecha",
 )
 def cambia_formato_fecha(data_file, column_name):
-    os.system("src/cambia_formato_fecha {} {}".format(data_file, column_name))
+    os.system("cambia_formato_fecha {} {}".format(data_file, column_name))
