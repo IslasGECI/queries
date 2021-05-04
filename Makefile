@@ -1,4 +1,4 @@
-tests: install test_select_growth_rates_and_p_values
+tests: install bats_tests
 	shellspec tests/shellspec_tests/
 
 SHELL := /bin/bash
@@ -38,5 +38,6 @@ install:
 	export PATH="/usr/local/bin:$${PATH}"
 	pip install . --upgrade
 
-test_select_growth_rates_and_p_values:
-	bats tests/bats_tests/test_select_growth_rates_and_p_values.sh
+bats_tests:
+	bats tests/bats_tests/test_run_query.sh \
+	tests/bats_tests/test_select_growth_rates_and_p_values.sh \
