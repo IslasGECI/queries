@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# Función que corre en sqlite los queries de los archivos sql
+
+query_file=${1}
+data_file=${2}
+export table_name=$(basename "${data_file}" .csv)
+query_name=$(basename "${query_file}" .sql)
+path=$(dirname ${query_file})
+query=$(envsubst < ${path}/${query_name}.sql)
+
+csvsql --snifflimit 0 --no-inference --blanks --query "${query}" \
+  ${data_file}
