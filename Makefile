@@ -39,5 +39,6 @@ install:
 	pip install . --upgrade
 
 bats_tests:
-	bats tests/bats_tests/test_run_query.sh \
-	tests/bats_tests/test_select_growth_rates_and_p_values.sh
+	bats \
+		tests/bats_tests/test_run_query.sh \
+		tests/bats_tests/test_select_growth_rates_and_p_values.sh
